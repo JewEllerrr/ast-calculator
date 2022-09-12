@@ -51,19 +51,8 @@ public class TokenService {
     }
 
     public boolean isNumeric(String string) {
-        if ((string == null) || string.equals("") || string.startsWith("-")) {
-            return false;
-        }
-        try {
-            int value = Integer.parseInt(string);
-            short s = (short) value;
-            Short.toUnsignedInt(s);
-            return true;
-        }
-        catch (NumberFormatException e) {
-            return false;
-        }
-
+        String regex = "^(0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$";
+        return string.matches(regex);
     }
 
     public String convertTokensToString(ArrayList<Token> tokens) {

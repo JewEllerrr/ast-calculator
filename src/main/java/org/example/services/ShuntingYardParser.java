@@ -32,8 +32,8 @@ public class ShuntingYardParser {
                 default:
                     if (!t.getType().equals(TokenType.LITERAL) && !t.getType().equals(TokenType.VARIABLE)) {
                         Token o2;
-                        while (!operatorStack.isEmpty() && null != (o2 = operatorStack.peek())) {
-                            if ((0 == t.comparePrecedence(o2)) || t.comparePrecedence(o2) < 0) {
+                        while (!operatorStack.isEmpty() && (o2 = operatorStack.peek()) != null) {
+                            if ((t.comparePrecedence(o2) == 0) || t.comparePrecedence(o2) < 0) {
                                 operatorStack.pop();
                                 addNode(operandStack, o2);
                             }
@@ -45,7 +45,7 @@ public class ShuntingYardParser {
                     break;
             }
         }
-        while (!operatorStack.isEmpty()) {
+        while (!operatorStack.isEmpty() && !operatorStack.peek().getType().equals(TokenType.LPAREN)) {
             addNode(operandStack, operatorStack.pop());
         }
         return operandStack.pop();
