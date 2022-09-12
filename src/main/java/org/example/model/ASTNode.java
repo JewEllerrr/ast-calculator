@@ -1,4 +1,4 @@
-package model;
+package org.example.model;
 
 public class ASTNode {
     private final Token token;

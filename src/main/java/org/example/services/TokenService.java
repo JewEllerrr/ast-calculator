@@ -1,7 +1,7 @@
-package services;
+package org.example.services;
 
-import model.Token;
-import model.TokenType;
+import org.example.model.Token;
+import org.example.model.TokenType;
 
 import java.util.ArrayList;
 import java.util.HashSet;

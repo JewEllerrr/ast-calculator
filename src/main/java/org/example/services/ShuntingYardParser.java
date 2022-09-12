@@ -1,8 +1,8 @@
-package services;
+package org.example.services;
 
-import model.ASTNode;
-import model.Token;
-import model.TokenType;
+import org.example.model.ASTNode;
+import org.example.model.Token;
+import org.example.model.TokenType;
 
 import java.util.ArrayList;
 import java.util.Stack;

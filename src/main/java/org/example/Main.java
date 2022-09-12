@@ -1,8 +1,10 @@
-import model.ASTNode;
-import model.Token;
-import model.TokenType;
-import services.ShuntingYardParser;
-import services.TokenService;
+package org.example;
+
+import org.example.model.ASTNode;
+import org.example.model.Token;
+import org.example.model.TokenType;
+import org.example.services.ShuntingYardParser;
+import org.example.services.TokenService;
 
 import java.util.ArrayList;
 import java.util.HashSet;
