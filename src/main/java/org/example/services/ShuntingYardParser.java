@@ -9,7 +9,7 @@ import java.util.Stack;
 
 public class ShuntingYardParser {
 
-    public ASTNode convertInfixNotationToAST(ArrayList<Token> tokens) throws IllegalStateException {
+    public ASTNode convertInfixNotationToAST(ArrayList<Token> tokens) throws IllegalStateException, IllegalArgumentException {
         if (tokens.isEmpty()) throw new IllegalStateException();
         Stack<Token> operatorStack = new Stack<>();
         Stack<ASTNode> operandStack = new Stack<>();
@@ -51,10 +51,16 @@ public class ShuntingYardParser {
         return operandStack.pop();
     }
 
-    private void addNode(Stack<ASTNode> stack, Token operator) {
-        ASTNode rightASTNode = stack.pop();
-        ASTNode leftASTNode = stack.pop();
-        stack.push(new ASTNode(operator, leftASTNode, rightASTNode));
+    private void addNode(Stack<ASTNode> stack, Token operator) throws IllegalArgumentException {
+        try {
+            ASTNode rightASTNode = stack.pop();
+            ASTNode leftASTNode = stack.pop();
+            stack.push(new ASTNode(operator, leftASTNode, rightASTNode));
+        }
+        catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+
     }
 
     public double evaluateAST(ASTNode tree) throws IllegalArgumentException {

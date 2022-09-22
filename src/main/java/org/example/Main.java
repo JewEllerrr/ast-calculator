@@ -25,7 +25,7 @@ public class Main {
         try {
             astNode = shuntingYardParser.convertInfixNotationToAST(tokens);
         }
-        catch (IllegalStateException e) {
+        catch (Exception e) {
             System.out.println("Unable to parse expression");
             userInput.close();
             System.exit(0);
